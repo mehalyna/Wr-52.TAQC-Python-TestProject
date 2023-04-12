@@ -1,6 +1,6 @@
 # Wr-52.TAQC-Python-TestProject
 
-## Wr-52.TAQC/Java/Python Test Project for GreenCity Web-App
+**Wr-52.TAQC/Java/Python Test Project for GreenCity Web-App**
 
 Link to GreenCity Website:
 
