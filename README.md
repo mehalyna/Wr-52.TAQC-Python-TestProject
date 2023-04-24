@@ -8,7 +8,7 @@ https://www.testgreencity.ga/ 
 
 Link to EventExpress Website:
 
-https://eventsexpress-test.azurewebsites.net/
+https://eventsexpress-test.azurewebsites.net/landing
 
 
 ## For contributors
