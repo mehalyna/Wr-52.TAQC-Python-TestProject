@@ -136,3 +136,4 @@ dmypy.json
 .idea/toolchains.xml
 .idea/vcs.xml
 .idea/Wr-52.TAQC-Python-TestProject.iml
+drivers/chromedriver.exe
