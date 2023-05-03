@@ -3,6 +3,7 @@ from selenium import webdriver
 
 from src.resources.locators import LandingPageLocators, HeadersLocators, RegistrationFormLocators
 from src.pages.landing_page import MainPage
+from src.resources.config_credentials import irina_email, irina_password, irina_account_name, wrong_email, wrong_password
 
 main_page_elements = LandingPageLocators()
 headers_elements = HeadersLocators()
@@ -24,18 +25,18 @@ class EventExpressPageTest(unittest.TestCase):
 
     def test_sign_in_with_right_credentials(self):
         self.main_page.click(main_page_elements.BUTTON_SIGN_IN_UP)
-        self.main_page.enter_text(main_page_elements.FIELD_SIGN_IN_FOR_EMAIL, "irynaqccv@gmail.com")
-        self.main_page.enter_text(main_page_elements.FIELD_SIGN_IN_FOR_PASSWORD, "Qwerty_123")
+        self.main_page.enter_text(main_page_elements.FIELD_SIGN_IN_FOR_EMAIL, irina_email)
+        self.main_page.enter_text(main_page_elements.FIELD_SIGN_IN_FOR_PASSWORD, irina_password)
         self.main_page.click(main_page_elements.BUTTON_SIGN_IN)
         account_name = self.main_page.get_element_on_page(headers_elements.ACCOUNT_NAME)
-        self.assertTrue("Iryna Melenko" in account_name.text)
+        self.assertTrue(irina_account_name in account_name.text)
 
     def test_sign_up_with_incorrect_data(self):
         self.main_page.click(main_page_elements.BUTTON_SIGN_IN_UP)
         self.main_page.click(main_page_elements.BUTTON_REGISTER)
-        self.main_page.enter_text(reg_form_elements.FIELD_SIGN_UP_FOR_EMAIL, "user@gmail.com")
-        self.main_page.enter_text(reg_form_elements.FIELD_SIGN_UP_FOR_PASSWORD, "mvahr")
-        self.main_page.enter_text(reg_form_elements.FIELD_SIGN_UP_FOR_REPEAT_PASSWORD, "mvahr")
+        self.main_page.enter_text(reg_form_elements.FIELD_SIGN_UP_FOR_EMAIL, wrong_email)
+        self.main_page.enter_text(reg_form_elements.FIELD_SIGN_UP_FOR_PASSWORD, wrong_password)
+        self.main_page.enter_text(reg_form_elements.FIELD_SIGN_UP_FOR_REPEAT_PASSWORD, wrong_password)
         self.main_page.click(reg_form_elements.BUTTON_SIGN_UP_CONFIRM)
         error_msg = self.main_page.get_element_on_page(reg_form_elements.WRONG_DATA)
         self.assertTrue("Must be 6 characters or more" in error_msg.text)
