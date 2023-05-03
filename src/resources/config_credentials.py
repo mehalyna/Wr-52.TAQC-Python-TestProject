@@ -18,3 +18,7 @@ irina_account_name = config.get('IRINA', 'IRINA_ACCOUNT_NAME')
 print(type(irina_email))
 print(irina_password)
 print(irina_account_name)
+
+# Get values from the wrong section
+wrong_email = config.get('INVALID', 'INVALID_EMAIL')
+wrong_password = config.get('INVALID', 'INVALID_PASSWORD')
