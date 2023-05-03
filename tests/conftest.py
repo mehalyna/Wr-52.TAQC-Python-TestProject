@@ -3,14 +3,17 @@
 
 import pytest
 from selenium import webdriver
+# from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from src.pages.common.BasePage import BasePage
+
 import config
+from src.pages.common.BasePage import BasePage
 
 
 @pytest.fixture(scope="function")
 def app():
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.maximize_window()
     yield BasePage(driver)
     driver.quit()
