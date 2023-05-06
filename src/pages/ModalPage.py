@@ -5,7 +5,7 @@ from src.pages.webElements.InputElement import InputElement
 SIGN_IN_BUTTON_TEXT = "SIGN IN"
 FORM_PAGE_LOGIN_TEXT = "LOGIN"
 FORM_PAGE_REGISTER_TEXT = "REGISTER"
-FORM_PAGE_BUTTON_SING_UP_TEXT = "Sign Up"
+FORM_PAGE_BUTTON_SING_UP_TEXT = "SIGN UP"
 
 
 class ModalPage(BaseWrapper):
