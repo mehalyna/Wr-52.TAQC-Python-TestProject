@@ -19,6 +19,7 @@ class ModalPage(BaseWrapper):
     FORM_REGISTER_PASSWORD_REPEAT_INP_XPATH = f"{MODAL_DIALOG_XPATH}//input[@name='RepeatPassword']"
     FORM_BTN_XPATH = f"{MODAL_DIALOG_XPATH}//span[@class='MuiButton-label']"
     SUCCESS_PAGE_ALERT_TEXT_CSS = "div.alert-success"
+    UNSUCCESS_PAGE_ALERT_TEXT_XPATH = "/html/body/div[3]/div[3]/div/div/div[2]/div/form/div[3]/div/p"
 
     def __init__(self, driver):
         super().__init__(driver)
