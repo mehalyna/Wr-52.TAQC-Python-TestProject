@@ -30,5 +30,3 @@ class LandingPage(BaseWrapper):
     def get_upcoming_public_event(self):
         self.scroll_down_page()
         return self.find_element_by_css(self.UPCOMING_PUBLIC_EVENT)
-
-
