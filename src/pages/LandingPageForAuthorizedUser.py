@@ -25,3 +25,7 @@ class LandingPageForAuthorizedUser(BaseWrapper):
         return self.find_element_by_css(self.USER_NAME_BTN_CSS).text
 
 
+
+
+
+

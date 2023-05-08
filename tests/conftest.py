@@ -25,6 +25,6 @@ def admin_setup(app):
         Login as an admin
     """
     app.go_to_site()
-    app.landing.sign_up_btn.click_btn_by_css()
-    app.modal.login(config.ADMIN_EMAIL, config.ADMIN_PASS)
+    app.landing.sign_in_up_btn.click_btn_by_css()
+    app.modal.login(config.USER_EMAIL, config.USER_PASSWORD)
     return app
