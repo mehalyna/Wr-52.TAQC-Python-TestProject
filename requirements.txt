@@ -1,6 +1,7 @@
 flake8
 pylint
 StyleCop
-pytest
-selenium
+pytest~=7.3.1
+selenium~=4.9.0
 webdriver-manager
+python-dotenv~=1.0.0
