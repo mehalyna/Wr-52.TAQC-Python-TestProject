@@ -1,7 +1,4 @@
-from sympy import E
-
 from src.pages.common.BaseWrapper import BaseWrapper
-from src.pages.webElements.ButtonElement import ButtonElement
 
 
 class EventDetails(BaseWrapper):
