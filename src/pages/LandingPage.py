@@ -15,6 +15,8 @@ class LandingPage(BaseWrapper):
     LOG_OUT_BTN_CSS = "div.text-right > div"
     All_PAGE_CSS = "html"
     UPCOMING_PUBLIC_EVENT = "img[alt~='Event']"
+    BACKGROUND_IMAGE_CSS = "article[style~='background-image:']"
+    EVENT_EXPRESS_LOGO_CSS = "#EEButton"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -23,6 +25,7 @@ class LandingPage(BaseWrapper):
         self.create_event_btn = ButtonElement(self.CREATE_EVENT_BTN_CSS, driver)
         self.join_eventsexpress_btn = ButtonElement(self.JOIN_EVENTSEXPRESS_BTN_CSS, driver)
         self.log_out_btn = ButtonElement(self.LOG_OUT_BTN_CSS, driver)
+        self.event_express_logo = ButtonElement(self.EVENT_EXPRESS_LOGO_CSS, driver)
 
     def scroll_down_page(self):
         return self.scroll_down(self.All_PAGE_CSS)
@@ -30,6 +33,6 @@ class LandingPage(BaseWrapper):
     def get_upcoming_public_event(self):
         self.scroll_down_page()
         return self.find_element_by_css(self.UPCOMING_PUBLIC_EVENT)
-    
+
     def get_background_image(self):
         return self.find_element_by_css(self.BACKGROUND_IMAGE_CSS)
