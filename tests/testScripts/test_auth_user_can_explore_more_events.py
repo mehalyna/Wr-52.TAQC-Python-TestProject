@@ -1,7 +1,4 @@
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 
 def test_auth_user_can_explore_more_events(app):
