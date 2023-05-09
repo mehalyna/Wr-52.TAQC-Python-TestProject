@@ -1,3 +1,4 @@
+from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import config
 from selenium.webdriver.common.by import By
@@ -88,7 +89,9 @@ class BaseWrapper:
         except TimeoutError:
             print("Site downloading failed, timeout")
 
-
     def scroll_down(self, locator, timeout=10):
         scroll = self.find_element_by_css(locator)
         return scroll.send_keys(Keys.END)
+
+    def get_current_url(self):
+        return self.driver.current_url

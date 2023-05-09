@@ -18,4 +18,3 @@ class BasePage(BaseWrapper):
         self.navigation = NavigationPage(driver)
         self.admin_panel = NavigationForAdminPanel(driver)
         self.landing_authorized_user = LandingPageForAuthorizedUser(driver)
-

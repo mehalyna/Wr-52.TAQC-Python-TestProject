@@ -12,6 +12,7 @@ class LandingPageForAuthorizedUser(BaseWrapper):
     CREATE_EVENT_BTN_CSS = "div.buttons > button"
     JOIN_EVENTSEXPRESS_BTN_CSS = "div.text-center > div.d-inline-block > button"
     LOG_OUT_BTN_CSS = "div.text-right > div"
+    EVENT_LOGO_XPATH = "//div[@class='col-12']/img"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -24,4 +25,8 @@ class LandingPageForAuthorizedUser(BaseWrapper):
     def get_user_name(self):
         return self.find_element_by_css(self.USER_NAME_BTN_CSS).text
 
+    def get_home_page_url(self):
+        return self.get_current_url()
 
+    def get_event_details(self):
+        return self.find_element_by_xpath(self.EVENT_LOGO_XPATH)
