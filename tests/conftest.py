@@ -9,6 +9,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 import config
 from src.pages.common.BasePage import BasePage
 
+from dotenv import load_dotenv
+
+
+@pytest.fixture(scope="session", autouse=True)
+def load_env():
+    load_dotenv()
+
 
 @pytest.fixture(scope="function")
 def app():
