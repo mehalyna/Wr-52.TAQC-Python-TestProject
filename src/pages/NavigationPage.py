@@ -42,3 +42,6 @@ class NavigationPage(BaseWrapper):
 
     def get_user_name(self):
         return self.find_element_by_css(self.NAV_USER_NAME_CSS).text
+
+    def get_nav_page_title(self):
+        return self.find_element_by_css(self.NAV_PAGE_TITLE_CSS)
