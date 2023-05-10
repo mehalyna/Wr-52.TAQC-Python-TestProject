@@ -11,6 +11,7 @@ import config
     Testing the 'Landing' page
 """
 
+
 @pytest.mark.skip(reason="to be verified")
 def test_landing_login(admin_setup):
     """
@@ -20,6 +21,7 @@ def test_landing_login(admin_setup):
     admin_setup.landing.find_event_btn.click_btn_by_css()
     assert expected_result == admin_setup.landing_authorized_user.get_user_name(), \
         "username results are not the same as expected"
+
 
 @pytest.mark.skip(reason="to be verified")
 def test_landing_registration(app):
@@ -32,6 +34,7 @@ def test_landing_registration(app):
     app.modal.registration(config.ADMIN_EMAIL, config.ADMIN_PASS)
     assert expected_result == app.modal.get_success_register_text(), \
         "alert message is not the same as expected"
+
 
 def test_background_image_changes(app):
     """Verify that background image changes"""
@@ -54,6 +57,7 @@ def test_background_image_changes(app):
 
     # Verify that the background image changed before the time limit was reached
     assert init_image != cur_image, f"The background image did not change after {time_limit} seconds"
+
 
 def test_background_image_changes_every_5_seconds(app):
     """Verify that background image changes every 5 seconds"""
@@ -94,6 +98,7 @@ def test_background_image_changes_every_5_seconds(app):
 
     # Verify that the background image changed before the time limit was reached
     assert time_passed <= 5, f"It took background image to change more than 5 seconds: {time_passed} seconds"
+
 
 def test_event_express_button_redirects_home(app):
     """Verify that Event Express logo redirects to home page"""
