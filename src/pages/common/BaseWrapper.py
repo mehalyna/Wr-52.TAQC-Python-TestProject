@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-
 import config
 
 # Define logger variable
@@ -91,3 +90,7 @@ class BaseWrapper:
     def scroll_down(self, locator, timeout=10):
         scroll = self.find_element_by_css(locator)
         return scroll.send_keys(Keys.END)
+
+    def scroll_to_element(self, locator, timeout=10):
+        action = ActionChains(self.driver)
+        return action.move_to_element(locator).perform()
