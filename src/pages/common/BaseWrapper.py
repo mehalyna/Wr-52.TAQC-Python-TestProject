@@ -1,12 +1,11 @@
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 import config
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-
 
 # Define logger variable
 
@@ -90,3 +89,10 @@ class BaseWrapper:
         except TimeoutError:
             print("Site downloading failed, timeout")
 
+    def scroll_down(self, locator, timeout=10):
+        scroll = self.find_element_by_css(locator)
+        return scroll.send_keys(Keys.END)
+
+    def scroll_to_element(self, locator, timeout=10):
+        action = ActionChains(self.driver)
+        return action.move_to_element(locator).perform()

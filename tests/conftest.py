@@ -3,12 +3,18 @@
 
 import pytest
 from selenium import webdriver
-# from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 import config
 from src.pages.common.BasePage import BasePage
+
+from dotenv import load_dotenv
+
+
+@pytest.fixture(scope="session", autouse=True)
+def load_env():
+    load_dotenv()
 
 
 @pytest.fixture(scope="function")

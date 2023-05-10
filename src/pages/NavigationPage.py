@@ -9,13 +9,12 @@ class NavigationPage(BaseWrapper):
     NAV_PAGE_TITLE_CSS = "span.nav-item-text"
     NAV_EDIT_PROFILE_CSS = "a:nth-child(1) > button"
     NAV_LOGOUT_CSS = "a:nth-child(2) > button"
-    NAV_USER_NAME_CSS = "h4.user-name"
+    NAV_USER_NAME_CSS = "#userNameAlign"
 
     def __init__(self, driver):
         super().__init__(driver)
         self.navigation_edit_profile_btn = ButtonElement(self.NAV_EDIT_PROFILE_CSS, driver)
         self.log_out_btn = ButtonElement(self.NAV_LOGOUT_CSS, driver)
-        self.navigation_page_title = ButtonElement(self.NAV_PAGE_TITLE_CSS, driver)
 
     def go_to_page(self, page_title):
         """
@@ -44,5 +43,5 @@ class NavigationPage(BaseWrapper):
     def get_user_name(self):
         return self.find_element_by_css(self.NAV_USER_NAME_CSS).text
 
-    def get_navigation_page_title(self):
+    def get_nav_page_title(self):
         return self.find_element_by_css(self.NAV_PAGE_TITLE_CSS)

@@ -19,8 +19,8 @@ class ModalPage(BaseWrapper):
     FORM_REGISTER_PASSWORD_REPEAT_INP_XPATH = f"{MODAL_DIALOG_XPATH}//input[@name='RepeatPassword']"
     FORM_BTN_XPATH = f"{MODAL_DIALOG_XPATH}//span[@class='MuiButton-label']"
     SUCCESS_PAGE_ALERT_TEXT_CSS = "div.alert-success"
-    WRONG_PASSWORD_ALERT_TEXT_XPATH = '//input[@name="password"]/../following-sibling::p[contains(@class,"Mui-error")]'
-    INVALID_EMAIL_OR_PASSWORD_TEXT_XPATH = '//div[contains(@class, "text-danger")]'
+    UNSUCCESS_PAGE_ALERT_TEXT_XPATH = "//input[@name='password']/parent::*/following-sibling::p[contains(@class, " \
+                                      "'Mui-error')] "
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -35,15 +35,6 @@ class ModalPage(BaseWrapper):
             Method for getting the message about successful registration.
         """
         return self.find_element_by_css(self.SUCCESS_PAGE_ALERT_TEXT_CSS).text
-
-    def get_error_message_text_when_registering(self):
-        """
-        Method for getting error message of less characters for password
-        """
-        return self.find_element_by_xpath(self.WRONG_PASSWORD_ALERT_TEXT_XPATH).text
-
-    def get_error_message_invalid_login_or_password(self):
-        return self.find_element_by_xpath(self.INVALID_EMAIL_OR_PASSWORD_TEXT_XPATH).text
 
     def login(self, username, password):
         """
