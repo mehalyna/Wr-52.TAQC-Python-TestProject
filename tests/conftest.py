@@ -1,9 +1,9 @@
 # Pytest configuration file
 # See https://docs.pytest.org/en/latest/ for more information
 
+import pytest
 import allure
 from allure_commons.types import AttachmentType
-import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
