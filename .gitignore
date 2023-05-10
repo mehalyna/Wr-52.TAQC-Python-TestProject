@@ -130,11 +130,5 @@ dmypy.json
 .pyre/
 
 .DS_Store
-.idea/inspectionProfiles/profiles_settings.xml
-.idea/inspectionProfiles/Project_Default.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/toolchains.xml
-.idea/vcs.xml
-.idea/Wr-52.TAQC-Python-TestProject.iml
+.idea
 drivers/chromedriver.exe
