@@ -1,8 +1,6 @@
 import config
 import pytest
 
-
-
 """
     Testing the upcoming public events
 """
@@ -15,5 +13,3 @@ def test_upcoming_public_events_guest(app):
 
 def test_upcoming_public_events_after_login(app, admin_setup):
     assert admin_setup.landing.get_upcoming_public_event()
-
-

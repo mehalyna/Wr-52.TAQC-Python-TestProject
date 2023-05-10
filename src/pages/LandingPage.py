@@ -15,6 +15,7 @@ class LandingPage(BaseWrapper):
     LOG_OUT_BTN_CSS = "div.text-right > div"
     All_PAGE_CSS = "html"
     UPCOMING_PUBLIC_EVENT = "img[alt~='Event']"
+    JOIN_EVENT_CSS = ".events-article>div>div:last-of-type>a"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -23,6 +24,7 @@ class LandingPage(BaseWrapper):
         self.create_event_btn = ButtonElement(self.CREATE_EVENT_BTN_CSS, driver)
         self.join_eventsexpress_btn = ButtonElement(self.JOIN_EVENTSEXPRESS_BTN_CSS, driver)
         self.log_out_btn = ButtonElement(self.LOG_OUT_BTN_CSS, driver)
+        self.join_event = ButtonElement(self.JOIN_EVENT_CSS, driver)
 
     def scroll_down_page(self):
         return self.scroll_down(self.All_PAGE_CSS)
