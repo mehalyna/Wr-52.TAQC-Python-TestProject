@@ -46,9 +46,11 @@ def test_sign_in_with_right_credentials(app):
 
 
 def test_sign_up_with_incorrect_data(app):
+    invalid_email = "user@gmail.com"
+    invalid_password = "mvahr"
     expected_result = "Must be 6 characters or more"
     app.landing.go_to_site()
     app.landing.sign_up_btn.click_btn_by_css()
-    app.modal.registration(config.INVALID_EMAIL, config.INVALID_PASSWORD)
+    app.modal.registration(invalid_email, invalid_password)
     error_msg = app.modal.find_element_by_xpath(app.modal.UNSUCCESS_PAGE_ALERT_TEXT_XPATH)
     assert error_msg.text == expected_result
