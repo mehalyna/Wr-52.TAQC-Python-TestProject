@@ -19,8 +19,8 @@ class ModalPage(BaseWrapper):
     FORM_REGISTER_PASSWORD_REPEAT_INP_XPATH = f"{MODAL_DIALOG_XPATH}//input[@name='RepeatPassword']"
     FORM_BTN_XPATH = f"{MODAL_DIALOG_XPATH}//span[@class='MuiButton-label']"
     SUCCESS_PAGE_ALERT_TEXT_CSS = "div.alert-success"
-    WRONG_PASSWORD_ALERT_TEXT_XPATH = '//input[@name="password"]/parent::*/following-sibling::p[contains(@class, "Mui-error")]'
-    INVALID_EMAIL_OR_PASSWORD_TEXT_XPATH='/html/body/div[4]/div[3]/div/div/div[2]/div/div[2]'
+    WRONG_PASSWORD_ALERT_TEXT_XPATH = '//input[@name="password"]/../following-sibling::p[contains(@class,"Mui-error")]'
+    INVALID_EMAIL_OR_PASSWORD_TEXT_XPATH = '//div[contains(@class, "text-danger")]'
 
     def __init__(self, driver):
         super().__init__(driver)
