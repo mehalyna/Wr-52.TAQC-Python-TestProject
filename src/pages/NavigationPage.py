@@ -9,7 +9,7 @@ class NavigationPage(BaseWrapper):
     NAV_PAGE_TITLE_CSS = "span.nav-item-text"
     NAV_EDIT_PROFILE_CSS = "a:nth-child(1) > button"
     NAV_LOGOUT_CSS = "a:nth-child(2) > button"
-    NAV_USER_NAME_CSS = "h4.user-name"
+    NAV_USER_NAME_CSS = "#userNameAlign"
 
     def __init__(self, driver):
         super().__init__(driver)

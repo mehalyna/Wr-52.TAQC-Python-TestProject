@@ -16,6 +16,7 @@ eggs/
 .eggs/
 lib/
 lib64/
+src/resources/credentials.ini
 parts/
 sdist/
 var/
@@ -129,3 +130,6 @@ dmypy.json
 .pyre/
 
 .DS_Store
+.idea
+drivers/chromedriver.exe
+config.py
