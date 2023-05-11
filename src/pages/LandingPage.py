@@ -1,12 +1,9 @@
-
-from src.pages.common.BaseWrapper import BaseWrapper
-from src.pages.webElements.ButtonElement import ButtonElement
+from src.common.BaseWrapper import BaseWrapper
+from src.webElements.ButtonElement import ButtonElement
 
 
 class LandingPage(BaseWrapper):
-    """
-        Locators and methods for landing page.
-    """
+    """Locators and methods for landing page."""
 
     SIGN_IN_UP_BTN_CSS = "#headbtn"
     FIND_EVENT_BTN_CSS = "div.buttons > a"
@@ -18,7 +15,7 @@ class LandingPage(BaseWrapper):
     BACKGROUND_IMAGE_CSS = "article[style~='background-image:']"
     EVENT_EXPRESS_LOGO_CSS = "#EEButton"
 
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         super().__init__(driver)
         self.sign_up_btn = ButtonElement(self.SIGN_IN_UP_BTN_CSS, driver)
         self.find_event_btn = ButtonElement(self.FIND_EVENT_BTN_CSS, driver)

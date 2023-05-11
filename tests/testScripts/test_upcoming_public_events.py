@@ -1,9 +1,4 @@
-import config
-import pytest
-
-"""
-    Testing the upcoming public events
-"""
+"""Testing the upcoming public events"""
 
 def test_upcoming_public_events_guest(app):
     app.landing.go_to_site()

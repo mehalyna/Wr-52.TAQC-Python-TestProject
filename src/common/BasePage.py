@@ -1,6 +1,7 @@
-from src.pages.common.BaseWrapper import BaseWrapper
+from src.common.BaseWrapper import BaseWrapper
 from src.pages.EventDetails import EventDetails
 from src.pages.Footer import Footer
+from src.pages.Header import Header
 from src.pages.LandingPage import LandingPage
 from src.pages.LandingPageForAuthorizedUser import LandingPageForAuthorizedUser
 from src.pages.ModalPage import ModalPage
@@ -10,10 +11,9 @@ from src.pages.NavigationPage import NavigationPage
 
 class BasePage(BaseWrapper):
 
-    def __init__(self, driver):
-        """
-            Page initialization.
-        """
+    def __init__(self, driver) -> None:
+        """Page initialization."""
+
         super().__init__(driver)
         self.landing = LandingPage(driver)
         self.modal = ModalPage(driver)
@@ -22,3 +22,4 @@ class BasePage(BaseWrapper):
         self.landing_authorized_user = LandingPageForAuthorizedUser(driver)
         self.event_details = EventDetails(driver)
         self.footer = Footer(driver)
+        self.header = Header(driver)

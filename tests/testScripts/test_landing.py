@@ -1,33 +1,33 @@
-# It'll be the importing of report tools here
+"""Testing the 'Landing' page"""
 
 import re
 import time
 
+import allure
 import pytest
+from allure_commons.types import Severity
 
 import config
 
-"""
-    Testing the 'Landing' page
-"""
-
 
 @pytest.mark.skip(reason="to be verified")
-def test_landing_login(admin_setup):
-    """
-         Verify that user has the ability to login in as an Admin.
-    """
+@allure.title("Test login:")
+@allure.severity(Severity.BLOCKER)
+def test_landing_login(admin_setup) -> None:
+    """Verify that user has the ability to login in as an Admin."""
     expected_result = "AlexTestEngineer"
     admin_setup.landing.find_event_btn.click_btn_by_css()
     assert expected_result == admin_setup.landing_authorized_user.get_user_name(), \
         "username results are not the same as expected"
-
+    with allure.step("Click find event button and go to home page"):
+        admin_setup.landing.find_event_btn.click_btn_by_css()
+    with allure.step("Verify username is as expected"):
+        assert expected_result == admin_setup.landing_authorized_user.get_user_name(), \
+            "username results are not the same as expected"
 
 @pytest.mark.skip(reason="to be verified")
-def test_landing_registration(app):
-    """
-        Verify that the user has the ability to register a new account.
-    """
+def test_landing_registration(app) -> None:
+    """Verify that the user has the ability to register a new account."""
     expected_result = "Your registration was successfully. Please confirm your email."
     app.landing.go_to_site()
     app.landing.sign_up_btn.click_btn_by_css()
@@ -36,7 +36,7 @@ def test_landing_registration(app):
         "alert message is not the same as expected"
 
 
-def test_background_image_changes(app):
+def test_background_image_changes(app) -> None:
     """Verify that background image changes"""
     app.landing.go_to_site()
     pattern = r"\/([^\/]+\.jpg)"
@@ -59,7 +59,7 @@ def test_background_image_changes(app):
     assert init_image != cur_image, f"The background image did not change after {time_limit} seconds"
 
 
-def test_background_image_changes_every_5_seconds(app):
+def test_background_image_changes_every_5_seconds(app) -> None:
     """Verify that background image changes every 5 seconds"""
     app.landing.go_to_site()
     pattern = r"\/([^\/]+\.jpg)"
@@ -100,28 +100,28 @@ def test_background_image_changes_every_5_seconds(app):
     assert time_passed <= 5, f"It took background image to change more than 5 seconds: {time_passed} seconds"
 
 
-def test_event_express_button_redirects_home(app):
+def test_event_express_button_redirects_home(app) -> None:
     """Verify that Event Express logo redirects to home page"""
     app.landing.go_to_site()
     app.landing.event_express_logo.click_btn_by_css()
     assert app.driver.current_url == f'{config.BASE_URL}home/events'
 
 
-def test_registration_form_appears_after_click(app):
+def test_registration_form_appears_after_click(app) -> None:
     app.landing.go_to_site()
     app.landing.sign_up_btn.click_btn_by_css()
     registration_form = app.find_element_by_xpath(app.modal.FORM_PAGE_XPATH)
     assert registration_form
 
 
-def test_sign_in_with_right_credentials(app):
+def test_sign_in_with_right_credentials(app) -> None:
     app.landing.go_to_site()
     app.landing.sign_up_btn.click_btn_by_css()
     app.modal.login(config.IRINA_EMAIL, config.IRINA_PASSWORD)
     assert config.IRINA_ACCOUNT_NAME == app.navigation.get_user_name()
 
 
-def test_sign_up_with_incorrect_data(app):
+def test_sign_up_with_incorrect_data(app) -> None:
     invalid_email = "user@gmail.com"
     invalid_password = "mvahr"
     expected_result = "Must be 6 characters or more"
