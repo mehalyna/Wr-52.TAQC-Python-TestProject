@@ -59,3 +59,6 @@ class ModalPage(BaseWrapper):
         self.pass_inp.send_data_by_xpath(password)
         self.pass_repeat_inp.send_data_by_xpath(password)
         self.sign_in_up_clear_btns.click_btn_by_name_by_xpath(FORM_PAGE_BUTTON_SING_UP_TEXT)
+
+    def get_modal_dialog(self):
+        return self.find_element_by_xpath(self.MODAL_DIALOG_XPATH)
