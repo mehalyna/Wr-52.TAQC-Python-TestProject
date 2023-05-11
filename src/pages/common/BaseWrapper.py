@@ -96,3 +96,11 @@ class BaseWrapper:
     def scroll_to_element(self, locator, timeout=10):
         action = ActionChains(self.driver)
         return action.move_to_element(locator).perform()
+
+    def get_current_url(self):
+        return self.driver.current_url
+
+    def wait_until_element_clickable(self, locator, timeout=10):
+        element = WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable((By.XPATH, locator)),
+                                                  message=f"Can't find elements by locator {locator}")
+        return element

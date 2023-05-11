@@ -4,3 +4,4 @@ pytest
 selenium
 webdriver-manager
 python-dotenv
+allure-pytest

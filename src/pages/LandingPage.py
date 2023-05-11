@@ -1,3 +1,4 @@
+import time
 
 from src.pages.common.BaseWrapper import BaseWrapper
 from src.pages.webElements.ButtonElement import ButtonElement
@@ -17,6 +18,7 @@ class LandingPage(BaseWrapper):
     UPCOMING_PUBLIC_EVENT = "img[alt~='Event']"
     BACKGROUND_IMAGE_CSS = "article[style~='background-image:']"
     EVENT_EXPRESS_LOGO_CSS = "#EEButton"
+    JOIN_EVENT_XPATH = "//div[@class='card-body']/div/div/a"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -26,6 +28,7 @@ class LandingPage(BaseWrapper):
         self.join_eventsexpress_btn = ButtonElement(self.JOIN_EVENTSEXPRESS_BTN_CSS, driver)
         self.log_out_btn = ButtonElement(self.LOG_OUT_BTN_CSS, driver)
         self.event_express_logo = ButtonElement(self.EVENT_EXPRESS_LOGO_CSS, driver)
+        self.join_event_link = ButtonElement(self.JOIN_EVENT_XPATH, driver)
 
     def scroll_down_page(self):
         return self.scroll_down(self.All_PAGE_CSS)
