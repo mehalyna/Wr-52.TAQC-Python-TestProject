@@ -138,4 +138,3 @@ def test_user_is_redirected_to_privacy_page_when_privacy_link_clicked(app):
     app.footer.privacy_link.click_btn_by_xpath()
     expected_result = 'Privacy Policy'
     assert expected_result == app.privacy.get_privacy_page_heading()
-    time.sleep(10)
