@@ -1,19 +1,18 @@
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from src.pages.common.BaseWrapper import BaseWrapper
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
+from src.common.BaseWrapper import BaseWrapper
 
 
 class NavigationForAdminPanel(BaseWrapper):
-    """
-        Locators and methods for navigation menu on admin panel
-    """
+    """Locators and methods for navigation menu on admin panel"""
+
     ADMIN_MENU = "#sub-nav"
     USER_NAME = "h4.user-name"
 
     def go_to_page(self, page_title, wait_time=10):
-        """
-            Method for click on page depending on page_title value.
+        """Method for click on page depending on page_title value.
             Pages of Admin Panel:
                 "Categories" - Edit_category
                 "UnitsOfMeasuring" - Units_of_measuring

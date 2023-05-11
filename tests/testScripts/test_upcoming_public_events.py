@@ -1,13 +1,7 @@
-import time
-
-import config
-import pytest
-
-"""
-    Testing the upcoming public events
-    - upcoming event appears in "Upcoming events" section on landing page before and after login
-    - user can view details of events 
-    - after click on "Join event" home page with events appears
+"""Testing the upcoming public events
+    #TODO - upcoming event appears in "Upcoming events" section on landing page before and after login
+    #TODO - user can view details of events
+    #TODO - after click on "Join event" home page with events appears
 """
 
 def test_upcoming_public_events_before_login(app):

@@ -1,4 +1,4 @@
-from src.pages.common.BaseWrapper import BaseWrapper
+from src.common.BaseWrapper import BaseWrapper
 
 
 class EventDetails(BaseWrapper):
@@ -9,10 +9,7 @@ class EventDetails(BaseWrapper):
     EVENT_DATE_XPATH = "//time/.."
     EVENT_LOCATION_XPATH = "//div[@class='text-block']//div"
     EVENT_DESCRIPTION_XPATH = "//div[contains(@class, 'text-box-big')]"
-    EVENT_ORGANIZER_XPATH = "//div//h5"
-
-    def __init__(self, driver):
-        super().__init__(driver)
+    JOIN_BUTTON_XPATH = "//button[contains(@class, 'join-leave')]"
 
     def get_event_name(self):
         return self.find_element_by_xpath(self.EVENT_NAME_XPATH).text
@@ -26,3 +23,6 @@ class EventDetails(BaseWrapper):
 
     def get_event_description(self):
         return self.find_element_by_xpath(self.EVENT_DESCRIPTION_XPATH).text
+
+    def join_event(self):
+        self.find_element_by_xpath(self.JOIN_BUTTON_XPATH).click()

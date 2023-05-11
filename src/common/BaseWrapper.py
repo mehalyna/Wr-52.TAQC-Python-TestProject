@@ -7,21 +7,18 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 import config
 
-# Define logger variable
 
 class BaseWrapper:
 
-    def __init__(self, driver):
-        """
-            Method for class fields declaration.
-        """
+    def __init__(self, driver) -> None:
+        """Method for class fields declaration."""
+
         self.driver = driver
         self.base_url = config.BASE_URL
 
     def find_element_by_css(self, locator, timeout=10):
-        """
-            Method for search element by css selector with wait
-        """
+        """Method for search element by css selector with wait"""
+
         try:
             WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.CSS_SELECTOR, locator)),
                                                       message=f"Can't find element by locator {locator}")
@@ -34,9 +31,8 @@ class BaseWrapper:
             print(f"Element {locator} not found")
 
     def find_element_by_xpath(self, locator, timeout=10):
-        """
-            Method for search element by xpath selector with wait
-        """
+        """Method for search element by xpath selector with wait"""
+
         try:
             WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((By.XPATH, locator)),
                                                       message=f"Can't find element by locator {locator}")
@@ -49,9 +45,8 @@ class BaseWrapper:
             print(f"Element {locator} not found")
 
     def find_elements(self, locator, timeout=10):
-        """
-            Method for search elements by css selector with wait
-        """
+        """Method for search elements by css selector with wait"""
+
         try:
             WebDriverWait(self.driver, timeout).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, locator)),
                                                       message=f"Can't find elements by locator {locator}")
@@ -64,9 +59,8 @@ class BaseWrapper:
             print(f"Element {locator} not found")
 
     def find_elements_by_xpath(self, locator, timeout=10):
-        """
-            Method for search elements by xpath selector with wait
-        """
+        """Method for search elements by xpath selector with wait"""
+
         try:
             WebDriverWait(self.driver, timeout).until(EC.presence_of_all_elements_located((By.XPATH, locator)),
                                                       message=f"Can't find elements by locator {locator}")
@@ -79,9 +73,8 @@ class BaseWrapper:
             print(f"Elements {locator} not  found")
 
     def go_to_site(self):
-        """
-            Method for go to the base_url
-        """
+        """Method for go to the base_url"""
+
         try:
             site = self.driver.get(config.BASE_URL)
             print("Site downloaded")
@@ -89,11 +82,11 @@ class BaseWrapper:
         except TimeoutError:
             print("Site downloading failed, timeout")
 
-    def scroll_down(self, locator, timeout=10):
+    def scroll_down(self, locator):
         scroll = self.find_element_by_css(locator)
         return scroll.send_keys(Keys.END)
 
-    def scroll_to_element(self, locator, timeout=10):
+    def scroll_to_element(self, locator):
         action = ActionChains(self.driver)
         return action.move_to_element(locator).perform()
 
