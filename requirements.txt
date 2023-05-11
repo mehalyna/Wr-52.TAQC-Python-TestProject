@@ -1,6 +1,6 @@
 flake8
 pylint
-StyleCop
 pytest
 selenium
 webdriver-manager
+python-dotenv

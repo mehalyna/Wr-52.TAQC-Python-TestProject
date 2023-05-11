@@ -5,7 +5,7 @@ from src.pages.webElements.InputElement import InputElement
 SIGN_IN_BUTTON_TEXT = "SIGN IN"
 FORM_PAGE_LOGIN_TEXT = "LOGIN"
 FORM_PAGE_REGISTER_TEXT = "REGISTER"
-FORM_PAGE_BUTTON_SING_UP_TEXT = "Sign Up"
+FORM_PAGE_BUTTON_SING_UP_TEXT = "SIGN UP"
 
 
 class ModalPage(BaseWrapper):
@@ -19,6 +19,8 @@ class ModalPage(BaseWrapper):
     FORM_REGISTER_PASSWORD_REPEAT_INP_XPATH = f"{MODAL_DIALOG_XPATH}//input[@name='RepeatPassword']"
     FORM_BTN_XPATH = f"{MODAL_DIALOG_XPATH}//span[@class='MuiButton-label']"
     SUCCESS_PAGE_ALERT_TEXT_CSS = "div.alert-success"
+    UNSUCCESS_PAGE_ALERT_TEXT_XPATH = "//input[@name='password']/parent::*/following-sibling::p[contains(@class, " \
+                                      "'Mui-error')] "
 
     def __init__(self, driver):
         super().__init__(driver)
