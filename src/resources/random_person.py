@@ -4,6 +4,7 @@ from random import choice
 
 
 def random_person() -> tuple[str, str]:
+    """Generate random email and password and return"""
     email = ""
     password = ""
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
@@ -13,7 +14,7 @@ def random_person() -> tuple[str, str]:
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-    for n in range(5):
+    for _ in range(5):
         email += choice(letters) + choice(numbers)
         password += choice(letters) + choice(symbols) + choice(numbers)
 
