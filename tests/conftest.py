@@ -18,21 +18,22 @@ def load_env() -> None:
     load_dotenv()
 
 
-@pytest.fixture(scope="function")
-def app():
+@pytest.fixture(scope="function", name="app")
+def main_app():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver.set_window_size(1920, 1080)
     driver.maximize_window()
     yield BasePage(driver)
     driver.quit()
 
 
 @pytest.fixture(scope="function")
-def admin_setup(base=app):
+def admin_setup(app):
     """Login as an admin"""
-    base.go_to_site()
-    base.landing.sign_up_btn.click_btn_by_css()
-    base.modal.login(config.ADMIN_EMAIL, config.ADMIN_PASS)
-    return base
+    app.go_to_site()
+    app.landing.sign_up_btn.click_btn_by_css()
+    app.modal.login(config.ADMIN_EMAIL, config.ADMIN_PASS)
+    return app
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
@@ -44,13 +45,13 @@ def pytest_runtest_makereport(item):
 
 
 @pytest.fixture(autouse=True)
-def screenshot_on_failure(request, base=app):
+def screenshot_on_failure(request, app):
     """Make screenshot on a test failure"""
     yield
     if request.node.rep_setup.failed:
-        make_screenshot(base.driver, request.function.__name__)
+        make_screenshot(app.driver, request.function.__name__)
     elif request.node.rep_call.failed:
-        make_screenshot(base.driver, request.function.__name__)
+        make_screenshot(app.driver, request.function.__name__)
 
 
 def make_screenshot(driver, function_name) -> None:

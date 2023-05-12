@@ -95,5 +95,5 @@ class BaseWrapper:
 
     def wait_until_element_clickable(self, locator, timeout=10):
         element = WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable((By.XPATH, locator)),
-                                                  message=f"Can't find elements by locator {locator}")
+                                                            message=f"Can't find elements by locator {locator}")
         return element
