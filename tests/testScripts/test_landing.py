@@ -130,3 +130,11 @@ def test_sign_up_with_incorrect_data(app) -> None:
     app.modal.registration(invalid_email, invalid_password)
     error_msg = app.modal.find_element_by_xpath(app.modal.UNSUCCESS_PAGE_ALERT_TEXT_XPATH)
     assert error_msg.text == expected_result
+
+
+def test_user_is_redirected_to_privacy_page_when_privacy_link_clicked(app):
+    app.landing.go_to_site()
+    app.landing.scroll_down_page()
+    app.footer.privacy_link.click_btn_by_xpath()
+    expected_result = 'Privacy Policy'
+    assert expected_result == app.privacy.get_privacy_page_heading()

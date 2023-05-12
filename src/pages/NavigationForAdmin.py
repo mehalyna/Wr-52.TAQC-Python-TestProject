@@ -26,3 +26,6 @@ class NavigationForAdminPanel(BaseWrapper):
             if page_title in element.text:
                 element.click()
                 return
+
+    def get_navigation_menu(self):
+        self.find_element_by_css(self.ADMIN_MENU)
