@@ -1,5 +1,5 @@
 """Testing the 'Landing' page"""
-
+import os
 import re
 import time
 
@@ -24,6 +24,7 @@ def test_landing_login(admin_setup) -> None:
     with allure.step("Verify username is as expected"):
         assert expected_result == admin_setup.landing_authorized_user.get_user_name(), \
             "username results are not the same as expected"
+
 
 @pytest.mark.skip(reason="to be verified")
 def test_landing_registration(app) -> None:
@@ -130,3 +131,22 @@ def test_sign_up_with_incorrect_data(app) -> None:
     app.modal.registration(invalid_email, invalid_password)
     error_msg = app.modal.find_element_by_xpath(app.modal.UNSUCCESS_PAGE_ALERT_TEXT_XPATH)
     assert error_msg.text == expected_result
+
+
+def test_user_is_redirected_to_privacy_page_when_privacy_link_clicked(app):
+    app.landing.go_to_site()
+    app.landing.scroll_down_page()
+    app.footer.privacy_link.click_btn_by_xpath()
+    expected_result = 'Privacy Policy'
+    assert expected_result == app.privacy.get_Privacy_page_heading()
+
+
+def test_pop_up_menu_appears_when_authorized_user_avatar_is_clicked(app):
+    email = os.getenv('EMAIL')
+    password = os.getenv('PASSWORD')
+    app.landing.go_to_site()
+    app.landing.sign_up_btn.click_btn_by_css()
+    app.modal.login(email, password)
+    app.landing_authorized_user.avatar_button.click_btn_by_css()
+    assert app.landing_authorized_user.drop_down_menu
+

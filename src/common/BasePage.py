@@ -7,6 +7,7 @@ from src.pages.LandingPageForAuthorizedUser import LandingPageForAuthorizedUser
 from src.pages.ModalPage import ModalPage
 from src.pages.NavigationForAdmin import NavigationForAdminPanel
 from src.pages.NavigationPage import NavigationPage
+from src.pages.PrivacyPage import Privacy_Page
 
 
 class BasePage(BaseWrapper):
@@ -23,3 +24,4 @@ class BasePage(BaseWrapper):
         self.event_details = EventDetails(driver)
         self.footer = Footer(driver)
         self.header = Header(driver)
+        self.privacy = Privacy_Page(driver)
