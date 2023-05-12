@@ -1,5 +1,5 @@
-from src.pages.common.BaseWrapper import BaseWrapper
-from src.pages.webElements.ButtonElement import ButtonElement
+from src.common.BaseWrapper import BaseWrapper
+from src.webElements.ButtonElement import ButtonElement
 
 
 class Privacy_Page(BaseWrapper):

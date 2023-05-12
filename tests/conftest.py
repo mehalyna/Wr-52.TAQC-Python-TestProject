@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 import config
-from src.pages.common.BasePage import BasePage
+from src.common.BasePage import BasePage
 
 from dotenv import load_dotenv
 
