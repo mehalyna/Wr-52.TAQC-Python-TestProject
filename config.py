@@ -1,6 +1,4 @@
-"""
-    Test data for initialization, authorization etc.
-"""
+"""Test data for initialization, authorization etc."""
 
 BASE_URL = "https://eventsexpress-test.azurewebsites.net/"
 ADMIN_EMAIL = "anyemail@gmail.com"

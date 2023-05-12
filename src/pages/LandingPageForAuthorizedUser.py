@@ -1,13 +1,9 @@
-import time
-
-from src.pages.common.BaseWrapper import BaseWrapper
-from src.pages.webElements.ButtonElement import ButtonElement
+from src.common.BaseWrapper import BaseWrapper
+from src.webElements.ButtonElement import ButtonElement
 
 
 class LandingPageForAuthorizedUser(BaseWrapper):
-    """
-        Locators and methods for landing page.
-    """
+    """Locators and methods for landing page."""
 
     USER_NAME_BTN_CSS = "#userNameAlign"
     FIND_EVENT_BTN_CSS = "div.buttons > a"
@@ -18,7 +14,7 @@ class LandingPageForAuthorizedUser(BaseWrapper):
     UPCOMING_EVENT_LINK_XPATH = "//div[@title='Meeting']/a"
     EVENT_LOGO_XPATH = "//img[contains(@id,'eventFullPhoto')]"
 
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         super().__init__(driver)
         self.sign_up_btn = ButtonElement(self.USER_NAME_BTN_CSS, driver)
         self.find_event_btn = ButtonElement(self.FIND_EVENT_BTN_CSS, driver)
@@ -40,12 +36,11 @@ class LandingPageForAuthorizedUser(BaseWrapper):
     def get_home_page_url(self):
         return self.get_current_url()
 
-    def open_event_details(self):
+    def open_event_details(self) -> None:
         return self.upcoming_event_link.click_btn_by_xpath()
 
     def get_event_logo(self):
         return self.find_element_by_xpath(self.EVENT_LOGO_XPATH)
 
     def wait_explore_more_events_link_clickable(self):
-        #time.sleep(2)
         return self.wait_until_element_clickable(self.EXPlORE_MORE_EVENTS_BTN_XPATH)

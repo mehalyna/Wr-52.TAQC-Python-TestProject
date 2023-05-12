@@ -1,5 +1,5 @@
-from src.pages.common.BaseWrapper import BaseWrapper
-from src.pages.webElements.ButtonElement import ButtonElement
+from src.common.BaseWrapper import BaseWrapper
+from src.webElements.ButtonElement import ButtonElement
 
 
 class Footer(BaseWrapper):
@@ -13,7 +13,7 @@ class Footer(BaseWrapper):
     INSTAGRAM_LINK_XPATH = "//i[contains(@class,'instagram')]/parent::*/@href"
     YOUTUBE_LINK_XPATH = "//i[contains(@class,'youtube')]/parent::*/@href"
 
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         super().__init__(driver)
         self.privacy_link = ButtonElement(self.PRIVACY_LINK_XPATH, driver)
         self.terms_link = ButtonElement(self.TERMS_LINK_XPATH, driver)

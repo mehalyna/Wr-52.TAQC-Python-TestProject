@@ -1,22 +1,21 @@
-from src.pages.common.BaseWrapper import BaseWrapper
-from src.pages.webElements.ButtonElement import ButtonElement
+from src.common.BaseWrapper import BaseWrapper
+from src.webElements.ButtonElement import ButtonElement
 
 
 class NavigationPage(BaseWrapper):
-    """
-        Locators and methods for navigation menu.
-    """
+    """Locators and methods for navigation menu."""
+
     NAV_PAGE_TITLE_CSS = "span.nav-item-text"
     NAV_EDIT_PROFILE_CSS = "a:nth-child(1) > button"
     NAV_LOGOUT_CSS = "a:nth-child(2) > button"
     NAV_USER_NAME_CSS = "#userNameAlign"
 
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         super().__init__(driver)
         self.navigation_edit_profile_btn = ButtonElement(self.NAV_EDIT_PROFILE_CSS, driver)
         self.log_out_btn = ButtonElement(self.NAV_LOGOUT_CSS, driver)
 
-    def go_to_page(self, page_title):
+    def go_to_page(self, page_title) -> None:
         """
             Method for click on page depending on page_title value.
             page_title values for admin:

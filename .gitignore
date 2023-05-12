@@ -133,3 +133,10 @@ dmypy.json
 .idea
 drivers/chromedriver.exe
 config.py
+
+# Editor-based HTTP Client requests
+/httpRequests/
+
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
