@@ -11,7 +11,7 @@ class Privacy_Page(BaseWrapper):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def get_privacy_page_heading(self):
+    def get_Privacy_page_heading(self):
         return self.find_element_by_css(self.PRIVACY_HEADING_CSS).text
 
 

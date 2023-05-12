@@ -1,3 +1,4 @@
+from src.pages.PrivacyPage import Privacy_Page
 from src.pages.common.BaseWrapper import BaseWrapper
 from src.pages.EventDetails import EventDetails
 from src.pages.Footer import Footer
@@ -24,3 +25,4 @@ class BasePage(BaseWrapper):
         self.event_details = EventDetails(driver)
         self.footer = Footer(driver)
         self.header = Header(driver)
+        self.privacy = Privacy_Page(driver)
