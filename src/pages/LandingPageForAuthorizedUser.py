@@ -13,6 +13,7 @@ class LandingPageForAuthorizedUser(BaseWrapper):
     EXPlORE_MORE_EVENTS_BTN_XPATH = "//a[text()='Explore more events']"
     UPCOMING_EVENT_LINK_XPATH = "//div[@title='Meeting']/a"
     EVENT_LOGO_XPATH = "//img[contains(@id,'eventFullPhoto')]"
+    AVATAR_BUTTON_CSS = '.MuiSvgIcon-root.MuiAvatar-fallback'
 
     def __init__(self, driver) -> None:
         super().__init__(driver)
@@ -23,6 +24,7 @@ class LandingPageForAuthorizedUser(BaseWrapper):
         self.log_out_btn = ButtonElement(self.LOG_OUT_BTN_CSS, driver)
         self.explore_more_events_btn = ButtonElement(self.EXPlORE_MORE_EVENTS_BTN_XPATH, driver)
         self.upcoming_event_link = ButtonElement(self.UPCOMING_EVENT_LINK_XPATH, driver)
+        self.avatar_button = ButtonElement(self.AVATAR_BUTTON_CSS, driver)
 
     def get_user_name(self):
         return self.find_element_by_css(self.USER_NAME_BTN_CSS).text
