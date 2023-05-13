@@ -148,5 +148,4 @@ def test_pop_up_menu_appears_when_authorized_user_avatar_is_clicked(app):
     app.landing.sign_up_btn.click_btn_by_css()
     app.modal.login(email, password)
     app.landing_authorized_user.avatar_button.click_btn_by_css()
-    assert app.landing_authorized_user.drop_down_menu
-
+    assert app.landing_authorized_user.log_out_btn

@@ -3,10 +3,8 @@ from src.webElements.ButtonElement import ButtonElement
 
 
 class Privacy_Page(BaseWrapper):
-    """
-    privacy page locators
-    """
-    PRIVACY_HEADING_CSS = '#main > div > h1'
+    """privacy page locators"""
+    PRIVACY_HEADING_CSS = '.privacy h1'
 
     def __init__(self, driver):
         super().__init__(driver)
