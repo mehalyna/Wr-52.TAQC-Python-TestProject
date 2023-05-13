@@ -7,7 +7,7 @@ class LandingPage(BaseWrapper):
 
     SIGN_IN_UP_BTN_CSS = "#headbtn"
     FIND_EVENT_BTN_CSS = "div.buttons > a"
-    CREATE_EVENT_BTN_CSS = "div.buttons > button"
+    CREATE_EVENT_BTN_XPATH = "//button[contains(text(), 'Create event')]"
     JOIN_EVENTSEXPRESS_BTN_CSS = "div.text-center > div.d-inline-block > button"
     LOG_OUT_BTN_CSS = "div.text-right > div"
     All_PAGE_CSS = "html"
@@ -20,7 +20,7 @@ class LandingPage(BaseWrapper):
         super().__init__(driver)
         self.sign_up_btn = ButtonElement(self.SIGN_IN_UP_BTN_CSS, driver)
         self.find_event_btn = ButtonElement(self.FIND_EVENT_BTN_CSS, driver)
-        self.create_event_btn = ButtonElement(self.CREATE_EVENT_BTN_CSS, driver)
+        self.create_event_btn = ButtonElement(self.CREATE_EVENT_BTN_XPATH, driver)
         self.join_eventsexpress_btn = ButtonElement(self.JOIN_EVENTSEXPRESS_BTN_CSS, driver)
         self.log_out_btn = ButtonElement(self.LOG_OUT_BTN_CSS, driver)
         self.event_express_logo = ButtonElement(self.EVENT_EXPRESS_LOGO_CSS, driver)
