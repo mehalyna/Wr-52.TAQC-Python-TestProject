@@ -12,6 +12,7 @@ class Header(BaseWrapper):
     LOG_OUT_XPATH = "//button[contains(text(), 'log out')]"
     HELP_AND_FEEDBACK_XPATH = "//button[contains(text(), 'help and feedback')]"
     DROPDOWN_MENU_XPATH = "//div[contains(@class, 'dropdown-menu')]"
+    USER_AVATAR_XPATH = "//div[contains(@class, 'MuiAvatar')]"
 
     def __init__(self, driver) -> None:
         super().__init__(driver)
@@ -31,4 +32,6 @@ class Header(BaseWrapper):
 
     def dropdown_menu_is_displayed(self) -> bool:
         """Drop down menu is displayed"""
-        return self.find_element_by_xpath(self.DROPDOWN_MENU_XPATH)
+        if 'show' not in self.find_element_by_xpath(self.DROPDOWN_MENU_XPATH).get_attribute('class'):
+            self.find_element_by_xpath(self.USER_AVATAR_XPATH).click()
+        return 'show' in self.find_element_by_xpath(self.DROPDOWN_MENU_XPATH).get_attribute('class')
