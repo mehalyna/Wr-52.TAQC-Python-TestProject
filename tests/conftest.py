@@ -1,6 +1,8 @@
 # Pytest configuration file
 # See https://docs.pytest.org/en/latest/ for more information
 
+import os
+
 import allure
 import pytest
 from allure_commons.types import AttachmentType
@@ -9,7 +11,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-import config
 from src.common.BasePage import BasePage
 
 
@@ -21,7 +22,6 @@ def load_env() -> None:
 @pytest.fixture(scope="function", name="app")
 def main_app():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    driver.set_window_size(1920, 1080)
     driver.maximize_window()
     yield BasePage(driver)
     driver.quit()
@@ -32,7 +32,7 @@ def admin_setup(app):
     """Login as an admin"""
     app.go_to_site()
     app.landing.sign_up_btn.click_btn_by_css()
-    app.modal.login(config.ADMIN_EMAIL, config.ADMIN_PASS)
+    app.modal.login(os.getenv("ADMIN_EMAIL"), os.getenv("ADMIN_PASS"))
     return app
 
 
