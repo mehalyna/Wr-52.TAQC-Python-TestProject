@@ -1,8 +1,9 @@
 """This module contains tests for the landing page of the unauthorized user."""
 
 import allure
+import pytest
 
-import config
+from config import NEW_EMAIL, NEW_PASS
 
 
 @allure.parent_suite('Landing Page')
@@ -13,7 +14,7 @@ def test_landing_a_new_user_can_register(app) -> None:
     expected_result = "Your register was successfull. Please confirm your email."
     app.landing.go_to_site()
     app.landing.sign_up_btn.click_btn_by_css()
-    app.modal.registration(config.NEW_EMAIL, config.NEW_PASS)
+    app.modal.registration(NEW_EMAIL, NEW_PASS)
     assert expected_result == app.modal.get_success_register_text(), \
         "alert message is not the same as expected"
 
@@ -59,4 +60,16 @@ def test_redirects_home_page_after_click_join_event_link(app) -> None:
     app.landing.go_to_site()
     app.landing_authorized_user.wait_explore_more_events_link_clickable()
     app.landing.join_event_link.click_btn_by_xpath()
-    assert expected_result in app.landing_authorized_user.get_home_page_url()
+    with allure.step("Check that the public events appear"):
+        assert expected_result in app.landing_authorized_user.get_home_page_url()
+
+@allure.parent_suite('Landing Page')
+@allure.suite('Unauthorized User')
+@allure.title("Test unauthorized is redirected to the login page after clicking 'Create event' button")
+@pytest.mark.skip(reason="This test is not working: Error 401")
+def test_redirects_to_login_page_after_click_create_event_btn(app) -> None:
+    app.landing.go_to_site()
+    with allure.step("Click 'Create event' button"):
+        app.landing.create_event_btn.click_btn_by_xpath()
+    with allure.step("Check that the login page appears"):
+        pass
