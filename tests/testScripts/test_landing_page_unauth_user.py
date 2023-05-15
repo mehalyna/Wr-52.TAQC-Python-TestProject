@@ -84,8 +84,8 @@ def test_redirects_to_login_page_after_click_create_event_btn(app) -> None:
 
 @allure.parent_suite('Landing Page')
 @allure.suite('Unauthorized User')
-@allure.title("Test the unauthorized user is not redirected to the home page by clicking 'Explore more events' button")
-@pytest.mark.skip(reason="The test fails")
+@allure.title("FAILS: Test the unauthorized user is not redirected to the home page\
+              by clicking 'Explore more events' button")
 def test_unauth_user_cant_explore_more_events(app) -> None:
     """Verify that the unauthorized user has no ability to explore more events"""
     with allure.step("Go to the landing page"):

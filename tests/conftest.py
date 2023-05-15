@@ -18,14 +18,12 @@ from src.common.BasePage import BasePage
 def load_env() -> None:
     load_dotenv()
 
-
 @pytest.fixture(scope="function", name="app")
 def main_app():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.maximize_window()
     yield BasePage(driver)
     driver.quit()
-
 
 @pytest.fixture(scope="function")
 def admin_setup(app):
@@ -35,14 +33,12 @@ def admin_setup(app):
     app.modal.login(os.getenv("ADMIN_EMAIL"), os.getenv("ADMIN_PASS"))
     return app
 
-
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item):
     """Hook the "item" object on a test failure"""
     outcome = yield
     rep = outcome.get_result()
     setattr(item, "rep_" + rep.when, rep)
-
 
 @pytest.fixture(autouse=True)
 def screenshot_on_failure(request, app):
@@ -52,7 +48,6 @@ def screenshot_on_failure(request, app):
         make_screenshot(app.driver, request.function.__name__)
     elif request.node.rep_call.failed:
         make_screenshot(app.driver, request.function.__name__)
-
 
 def make_screenshot(driver, function_name) -> None:
     """Method for making a screenshot."""

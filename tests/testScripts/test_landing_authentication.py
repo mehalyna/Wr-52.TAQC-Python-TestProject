@@ -8,7 +8,7 @@ from allure_commons.types import Severity
 
 @allure.parent_suite('Landing Page')
 @allure.suite('Authentication')
-@allure.title("Test login:")
+@allure.title("Test user has the ability to login in as an Admin:")
 @allure.severity(Severity.BLOCKER)
 def test_user_can_login_on_the_landing_page(admin_setup) -> None:
     """Verify that user has the ability to login in as an Admin."""
