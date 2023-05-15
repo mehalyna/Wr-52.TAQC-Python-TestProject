@@ -18,7 +18,7 @@ def test_user_can_login_on_the_landing_page(admin_setup) -> None:
         "username results are not the same as expected"
     with allure.step("Click event express button on the left corner and go to home page"):
         admin_setup.landing.event_express_logo.click_btn_by_css()
-    with allure.step("Verify username is as expected"):
+    with allure.step("The username is as expected"):
         assert expected_result == admin_setup.landing_authorized_user.get_user_name(), \
             "username results are not the same as expected"
 
@@ -32,5 +32,5 @@ def test_sign_in_with_right_credentials(app) -> None:
         app.landing.sign_up_btn.click_btn_by_css()
     with allure.step("Sign in with right credentials"):
         app.modal.login(os.getenv("IRINA_EMAIL"), os.getenv("IRINA_PASSWORD"))
-    with allure.step("Verify that user is logged in"):
+    with allure.step("The user is logged in"):
         assert os.getenv("IRINA_ACCOUNT_NAME") == app.navigation.get_user_name()

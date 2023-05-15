@@ -23,5 +23,5 @@ def test_redirects_to_home_page_from_any_page(app) -> None:
         app.navigation.go_to_page("Profile")
         app.header.event_express_button.click_btn_by_xpath()
 
-    with allure.step("Verify that user is on the home page"):
+    with allure.step("The user is on the home page"):
         assert app.driver.current_url == f'{BASE_URL}home/events'

@@ -10,25 +10,28 @@ import allure
 @allure.title("Test background image changes:")
 def test_background_image_changes(app) -> None:
     """Verify that background image changes"""
-    app.landing.go_to_site()
     pattern = r"\/([^\/]+\.jpg)"
     time_limit = 15
+
+    with allure.step("Go to the landing page"):
+        app.landing.go_to_site()
 
     # Store initial image filename
     init_image = app.landing.get_background_image().get_attribute('style')
     init_img_filename = re.search(pattern, init_image).group(1)
-    while time_limit > 0:
-        cur_image = app.landing.get_background_image().get_attribute('style')
-        cur_img_filename = re.search(pattern, cur_image).group(1)
 
-        # Compare filenames to make sure they're different
-        if cur_img_filename != init_img_filename:
-            break
-        time_limit -= 1
-        time.sleep(1)
+    with allure.step("The background image is changed"):
+        while time_limit > 0:
+            cur_image = app.landing.get_background_image().get_attribute('style')
+            cur_img_filename = re.search(pattern, cur_image).group(1)
 
-    # Verify that the background image changed before the time limit was reached
-    with allure.step("Verify that the background image changed before the time limit was reached"):
+            # Compare filenames to make sure they're different
+            if cur_img_filename != init_img_filename:
+                break
+            time_limit -= 1
+            time.sleep(1)
+
+    with allure.step("The background image's changed before the time limit was reached"):
         assert init_image != cur_image, f"The background image did not change after {time_limit} seconds"
 
 @allure.parent_suite('Landing Page')
@@ -36,9 +39,11 @@ def test_background_image_changes(app) -> None:
 @allure.title("Test background image changes every 5 seconds:")
 def test_background_image_changes_every_5_seconds(app) -> None:
     """Verify that background image changes every 5 seconds"""
-    app.landing.go_to_site()
     pattern = r"\/([^\/]+\.jpg)"
     time_limit = 15
+
+    with allure.step("Go to the landing page"):
+        app.landing.go_to_site()
 
     # Store initial image filename
     init_image = app.landing.get_background_image().get_attribute('style')
@@ -71,5 +76,5 @@ def test_background_image_changes_every_5_seconds(app) -> None:
             time_passed += 1
             time.sleep(1)
 
-    with allure.step("Verify that the background image changed before the time limit was reached"):
+    with allure.step("The background image's changed before the time limit was reached"):
         assert time_passed <= 5, f"It took background image to change more than 5 seconds: {time_passed} seconds"

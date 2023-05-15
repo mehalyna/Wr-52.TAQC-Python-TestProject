@@ -23,19 +23,23 @@ def test_auth_user_can_explore_more_events(app) -> None:
         app.landing_authorized_user.scroll_to_explore_more_events_btn()
         app.landing_authorized_user.explore_more_events_btn.click_btn_by_xpath()
 
-    with allure.step("Verify that the user is on the Events page"):
+    with allure.step("The user is on the Events page"):
         assert app.navigation.get_nav_page_title()
 
 @allure.parent_suite('Landing Page')
 @allure.suite('Authorized User')
 @allure.title("Test authorized user can see the upcoming events")
 def test_upcoming_public_events_visible_after_login(admin_setup) -> None:
-    assert admin_setup.landing.get_upcoming_public_event()
+    with allure.step("The upcoming events are visible"):
+        assert admin_setup.landing.get_upcoming_public_event()
 
 @allure.parent_suite('Landing Page')
 @allure.suite('Authorized User')
 @allure.title("Test authorized user can see the upcoming events details")
 def test_upcoming_events_details_visible_after_login(admin_setup) -> None:
-    admin_setup.landing.find_event_btn.click_btn_by_css()
-    admin_setup.landing_authorized_user.open_event_details()
-    assert admin_setup.landing_authorized_user.get_event_logo()
+    with allure.step("Click the 'Find event' button"):
+        admin_setup.landing.find_event_btn.click_btn_by_css()
+    with allure.step("Open the event details"):
+        admin_setup.landing_authorized_user.open_event_details()
+    with allure.step("The event details are visible"):
+        assert admin_setup.landing_authorized_user.get_event_logo()
