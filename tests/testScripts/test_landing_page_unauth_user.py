@@ -59,19 +59,6 @@ def test_upcoming_public_events_visible_before_login(app) -> None:
 
 @allure.parent_suite('Landing Page')
 @allure.suite('Unauthorized User')
-@allure.title("Test user can see public events after clicking join event link")
-def test_redirects_home_page_after_click_join_event_link(app) -> None:
-    expected_result = "https://eventsexpress-test.azurewebsites.net/home/events"
-    with allure.step("Go to the landing page"):
-        app.landing.go_to_site()
-    with allure.step("Click 'Join event' link"):
-        app.landing_authorized_user.wait_explore_more_events_link_clickable()
-        app.landing.join_event_link.click_btn_by_xpath()
-    with allure.step("The public events appear"):
-        assert expected_result in app.landing_authorized_user.get_home_page_url()
-
-@allure.parent_suite('Landing Page')
-@allure.suite('Unauthorized User')
 @allure.title("Test unauthorized is redirected to the login page after clicking 'Create event' button")
 @pytest.mark.skip(reason="This test is not working: Error 401")
 def test_redirects_to_login_page_after_click_create_event_btn(app) -> None:

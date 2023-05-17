@@ -14,6 +14,7 @@ class LandingPageForAuthorizedUser(BaseWrapper):
     UPCOMING_EVENT_LINK_XPATH = "//div[@title='Meeting']/a"
     EVENT_LOGO_XPATH = "//img[contains(@id,'eventFullPhoto')]"
     AVATAR_BUTTON_CSS = '.MuiSvgIcon-root.MuiAvatar-fallback'
+    JOIN_EVEN_BUTTON_XPATH = "//a[contains(text(), 'Join event')]"
 
     def __init__(self, driver) -> None:
         super().__init__(driver)

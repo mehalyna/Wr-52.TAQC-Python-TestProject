@@ -141,3 +141,6 @@ config.py
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+# Allure report
+allure_results/

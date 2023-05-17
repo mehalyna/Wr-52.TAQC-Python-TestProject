@@ -3,6 +3,8 @@ import os
 
 import allure
 
+from config import BASE_URL
+
 
 @allure.parent_suite('Landing Page')
 @allure.suite('Authorized User')
@@ -43,3 +45,14 @@ def test_upcoming_events_details_visible_after_login(admin_setup) -> None:
         admin_setup.landing_authorized_user.open_event_details()
     with allure.step("The event details are visible"):
         assert admin_setup.landing_authorized_user.get_event_logo()
+
+@allure.parent_suite('Landing Page')
+@allure.suite('Authorized User')
+@allure.title("Test authorized user can see public events after clicking join event link")
+def test_redirects_home_page_after_click_join_event_link(admin_setup) -> None:
+    expected_result = f"{BASE_URL}home/events"
+    with allure.step("Click 'Join event' link"):
+        admin_setup.landing_authorized_user.wait_explore_more_events_link_clickable()
+        admin_setup.landing.join_event_link.click_btn_by_xpath()
+    with allure.step("The public events appear"):
+        assert expected_result in admin_setup.landing_authorized_user.get_home_page_url()
