@@ -87,6 +87,7 @@ clear-cache-post-run=no
 enable=
     use-symbolic-message-instead,
     useless-suppression,
+    trailing-newlines
 
 # Disable the message, report, category or checker with the given id(s). You
 # can either give multiple identifiers separated by comma (,) or put this
@@ -105,7 +106,6 @@ disable=
     protected-access,
     too-few-public-methods,
     # handled by black
-    format,
     # We anticipate #3512 where it will become optional
     fixme,
     consider-using-assignment-expr,
@@ -202,7 +202,7 @@ redefining-builtins-modules=six.moves,past.builtins,future.builtins,builtins,io
 [FORMAT]
 
 # Maximum number of characters on a single line.
-max-line-length=100
+max-line-length=120
 
 # Regexp for a line that is allowed to be longer than the limit.
 ignore-long-lines=^\s*(# )?<?https?://\S+>?$

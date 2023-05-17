@@ -25,4 +25,3 @@ class BasePage(BaseWrapper):
         self.footer = Footer(driver)
         self.header = Header(driver)
         self.privacy = Privacy_Page(driver)
-
